@@ -46,7 +46,21 @@ async fn handle_package(Query(params): Query<PackageQuery>) {
     let package: Package = serde_yaml::from_str(&yaml_data)
         .expect("Failed to deserialize YAML");
 
+    let binary_path = String::new()
+    let binary_sha256 = String::new()
+    for binary: Binary in package.binaries {
+        if binary.target == target {
+            binary_path = binary.path;
+            binary_sha256 = binaty.sha256;
+    }
+    // check if the variables changed, otherwise handle this as an error
+    
     // get the sha256 hash of the binary and compare it to the sha256 according to the target
+    let sha256 = ...;  // uhh, impl this later
+    if binary_sha256 != sha256 {
+        // handle this as an error, the checksums/hashes should match
+    }
+    
     // if it matches, send a response to the client with the binary and the sha256 hash
     // ensure proper error handling and return proper HTTP response codes
 }
