@@ -9,6 +9,9 @@ struct Package:
 
 async fn handle_package(Query(params): Query<Package>) {
     // get the name and target (platform) from the POST request (params)
+    let name = &params.name;
+    let target = &params.target;
+    
     // search for the package in /packages by the name
     // in the package's yaml, get the path of the binary according to the target
     // get the sha256 hash of the binary and compare it to the sha256 according to the target
