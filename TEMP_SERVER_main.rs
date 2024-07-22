@@ -41,6 +41,11 @@ async fn handle_package(Query(params): Query<PackageQuery>) {
     let package_data_path = format!("{}/{}/{}.yaml", PACKAGES_ROOT, name, name);
     
     // in the package's yaml, get the path of the binary according to the target
+    let yaml_data = std::fs::read_to_string(package_path)
+        .expect("Failed to read file");
+    let package: Package = serde_yaml::from_str(&yaml_data)
+        .expect("Failed to deserialize YAML");
+
     // get the sha256 hash of the binary and compare it to the sha256 according to the target
     // if it matches, send a response to the client with the binary and the sha256 hash
     // ensure proper error handling and return proper HTTP response codes
