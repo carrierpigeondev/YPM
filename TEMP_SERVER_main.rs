@@ -2,8 +2,13 @@
 
 // imports omitted
 
-async fn handle_package() {
-    // get the name and target (platform) from the POST request
+#[derive(Deserialize)]
+struct Package:
+    name: String,
+    target: String,
+
+async fn handle_package(Query(params): Query<Package>) {
+    // get the name and target (platform) from the POST request (params)
     // search for the package in /packages by the name
     // in the package's yaml, get the path of the binary according to the target
     // get the sha256 hash of the binary and compare it to the sha256 according to the target
