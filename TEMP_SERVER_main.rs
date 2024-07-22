@@ -13,6 +13,8 @@ async fn handle_package(Query(params): Query<Package>) {
     let target = &params.target;
     
     // search for the package in /packages by the name
+    let package_data_path = format!("{}/{}/{}.yaml", PACKAGES_ROOT, name, name);
+    
     // in the package's yaml, get the path of the binary according to the target
     // get the sha256 hash of the binary and compare it to the sha256 according to the target
     // if it matches, send a response to the client with the binary and the sha256 hash
