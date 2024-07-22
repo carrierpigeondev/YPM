@@ -23,10 +23,10 @@ package:
     links:                                      # Optional
       - "https://www.example.com"
   binaries:
-    target: "Linux"
+    target: "Linux"                             # Optional (If Windows has a target)
       path: "~/Projects/Carrier Pigeon/output/carrier-pigeon_1.6.4+linux"
       sha256: PLACEHOLDER
-    target: "Windows"
+    target: "Windows"                           # Optional (If Linux has a target)
       path: "~/Projects/Carrier Pigeon/output/carrier-pigeon_1.6.4+windows.exe"
       sha256: PLACEHOLDER
 
