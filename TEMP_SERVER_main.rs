@@ -3,11 +3,36 @@
 // imports omitted
 
 #[derive(Deserialize)]
-struct Package:
+struct PackageQuery:
     name: String,
     target: String,
+    
+#[derive(Deserialize)]
+struct Package {
+    name: String,
+    version: String,
+    description: String,
+    license: String,
+    author: Author,
+    binaries: Vec<Binary>,
+}
 
-async fn handle_package(Query(params): Query<Package>) {
+#[derive(Deserialize)]
+struct Author {
+    name: String,
+    email: Option<String>,
+    phone: Option<String>,
+    links: Option<Vec<String>>,
+}
+
+#[derive(Deserialize)]
+struct Binary {
+    target: String,
+    path: String,
+    sha256: String,
+}
+
+async fn handle_package(Query(params): Query<PackageQuery>) {
     // get the name and target (platform) from the POST request (params)
     let name = &params.name;
     let target = &params.target;
