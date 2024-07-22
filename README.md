@@ -21,8 +21,10 @@ package:
     email: "carrierpigeon.dev@gmail.com"        # Optional
     phone: "123-456-7890"                       # Optional
     links:                                      # Optional
-      - https://www.example.com
-  
+      - "https://www.example.com"
+  binaries:
+    path: "~/Projects/Carrier Pigeon/output/carrier-pigeon_1.6.4+linux"
+    target: "Linux"
   
 
 ```
