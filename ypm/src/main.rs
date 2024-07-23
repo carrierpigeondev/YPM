@@ -1,12 +1,11 @@
-use std::fmt::format;
 use axum::{extract::Query, http::StatusCode, response::IntoResponse, routing::post, Json, Router, Extension};
-use serde::{Deserialize, Serialize};
+use serde::Deserialize;
 use serde_json::json;
 use serde_yml;
 use sha2::{Sha256, Digest};
 use std::fs::File;
 use std::io::Read;
-use base64::{alphabet, Engine, engine, engine::general_purpose};
+use base64::Engine;
 use sha2::digest::Update;
 use std::path::{Path, PathBuf};
 use std::sync::Arc;
@@ -128,8 +127,6 @@ async fn handle_package(Extension(packages_root): Extension<Arc<String>>, Query(
     }
 
     let extension = Path::new(&binary_path).extension().map_or("".to_string(), |ext| format!(".{}", ext.to_string_lossy()));
-
-    let e = base64::engine::general_purpose::STANDARD.encode(&buffer);
 
     println!("Sending the following content: {}", json!({
         "binary_content_LENGTH": base64::engine::general_purpose::STANDARD.encode(&buffer).len(),
