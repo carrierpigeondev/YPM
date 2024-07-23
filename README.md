@@ -25,7 +25,7 @@ package:
     target: "Linux"                             # Only one target is needed; this is specified by the POST request to the server
       path: "~/Projects/Carrier Pigeon/output/carrier-pigeon_1.6.4+linux"
       sha256: 5a6eba74179c077508b615566bd7875524b5b836d5d22d78a70563bc4ca9aa07
-    target: "Windows"                           
+    target: "Windows"
       path: "~/Projects/Carrier Pigeon/output/carrier-pigeon_1.6.4+windows.exe"
       sha256: c465946d97ea4c3fcbf5f74b576353a8e2cdb67e142201dd7547cd8037b912c3
 ```
@@ -36,7 +36,7 @@ The path for the binaries must be valid paths for the operating system the YPM h
 ## Setting Up
 Fork the repository. All server code is located in the `/ypm` Cargo project directory. To run, ensure you specify an argument for the `packages_root`. For example:
 ```
-cargo run /packages
+cargo run /home/coolkid/ypm_packages
 ```
 Ensure it is a global path. By default, the server runs on `localhost:41824`.
 
